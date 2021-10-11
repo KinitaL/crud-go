@@ -1,0 +1,16 @@
+version: '2'
+services:
+  go:
+    build:
+      context: ./server
+      dockerfile: ./Dockerfile
+    ports:
+      - "3002:3002"
+  postgre:
+    image: "postgres"
+    ports:
+      - '5435:5432'
+    env_file:
+      - dbsql.env
+    volumes:
+      - ./database-data:/var/lib/postgresql/data/
